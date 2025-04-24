@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 
 @Document(collection = "ratings")
-@Table(name = "ratings")
 public class Rating {
     @Id
     private String id;
