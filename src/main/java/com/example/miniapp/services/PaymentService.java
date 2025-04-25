@@ -25,12 +25,10 @@ public class PaymentService {
         return paymentRepository.findAll();
     }
 
-    // 8.4.2.3 Get Payment By ID
     public Payment getPaymentById(Long id) {
         return paymentRepository.findById(id).orElse(null);
     }
 
-    // 8.4.2.4 Update Payment
     public Payment updatePayment(Long id, Payment updatedPayment) {
         return paymentRepository.findById(id).map(payment -> {
             payment.setAmount(updatedPayment.getAmount());
@@ -41,17 +39,14 @@ public class PaymentService {
         }).orElse(null);
     }
 
-    // 8.4.2.5 Delete Payment
     public void deletePayment(Long id) {
         paymentRepository.deleteById(id);
     }
 
-    // 8.4.2.6 Find Payments By Trip ID
     public List<Payment> findPaymentsByTripId(Long tripId) {
         return paymentRepository.findByTripId(tripId);
     }
 
-    // 8.4.2.7 Find Payments With an Amount Greater Than a Threshold
     public List<Payment> findByAmountThreshold(Double threshold) {
         return paymentRepository.findByAmountGreaterThan(threshold);
     }
