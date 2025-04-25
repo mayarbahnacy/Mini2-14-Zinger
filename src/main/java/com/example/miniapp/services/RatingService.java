@@ -34,17 +34,14 @@ public class RatingService {
         return null;
     }
 
-    // 8.5.2.3 Delete Rating
     public void deleteRating(String id) {
         ratingRepository.deleteById(id);
     }
 
-    // 8.5.2.4 Get Ratings By Entity
     public List<Rating> getRatingsByEntity(Long entityId, String entityType) {
         return ratingRepository.findByEntityIdAndEntityType(entityId, entityType);
     }
 
-    // 8.5.2.5 Find Ratings Above a Specific Value
     public List<Rating> findRatingsAboveScore(int minScore) {
         return ratingRepository.findByScoreGreaterThan(minScore);
     }

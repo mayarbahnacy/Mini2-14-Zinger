@@ -5,7 +5,6 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-// Customer.java
 @Entity
 @Table(name = "customers")
 public class Customer {
