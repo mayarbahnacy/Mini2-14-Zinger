@@ -18,12 +18,10 @@ public class RatingService {
         this.ratingRepository = ratingRepository;
     }
 
-    // 8.5.2.1 Add Rating
     public Rating addRating(Rating rating) {
         return ratingRepository.save(rating);
     }
 
-    // 8.5.2.2 Update Rating
     public Rating updateRating(String id, Rating updatedRating) {
         Optional<Rating> optionalRating = ratingRepository.findById(id);
         if (optionalRating.isPresent()) {

@@ -17,12 +17,10 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    // 8.4.2.1 Add Payment
     public Payment addPayment(Payment payment) {
         return paymentRepository.save(payment);
     }
 
-    // 8.4.2.2 Get All Payments
     public List<Payment> getAllPayments() {
         return paymentRepository.findAll();
     }
