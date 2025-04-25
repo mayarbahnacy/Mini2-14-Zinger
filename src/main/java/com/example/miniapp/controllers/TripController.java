@@ -1,11 +1,10 @@
 package com.example.miniapp.controllers;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.List;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,15 +56,15 @@ public class TripController {
     }
 
     @GetMapping("/findByDateRange")
-    public List<Trip> findTripsWithinDateRange(@RequestParam LocalDate startDate,
-                                               @RequestParam LocalDate endDate) {
-        LocalDateTime startDateTime = startDate.atStartOfDay();
-        LocalDateTime endDateTime = endDate.atTime(LocalTime.MAX);
-        return tripService.findTripsWithinDateRange(startDateTime, endDateTime);
+    public List<Trip> findTripsWithinDateRange(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
+        return tripService.findTripsWithinDateRange(startDate, endDate);
     }
 
     @GetMapping("/findByCaptainId")
     public List<Trip> findTripsByCaptainId(@RequestParam Long captainId) {
         return tripService.findTripsByCaptainId(captainId);
     }
+
 }
